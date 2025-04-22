@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Efrei-Tir Inscription</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="./css/police.css">
+</head>
+<body>
+    <header>
+        <img src="../img/logo.png" alt="LogoEfreiTir" style="width: 160px; height: 160px; border-radius: 10px;">
+        <nav>
+            <a href="acceuil.html" class="navigation">Accueil</a>
+            <a href="activites.html" class="navigation">Activites</a>
+            <a href="souvenirs.html" class="navigation">Nos souvenirs</a>
+            <a href="evenements.html" class="navigation">Nos evenements a venir</a>
+            <a href="about.html" class="navigation">A propos</a>
+        </nav>
+    </header>
+
+    <main>
+        <section class="registration-form">
+            <h2>Inscription à une activité</h2>
+            <form id="registrationForm" action="confirmation.html" method="POST">
+                <label for="activity">Activité</label>
+                <input type="text" id="activity" name="activity" readonly>
+                
+                <label for="date">Date</label>
+                <input type="text" id="date" name="date" readonly>
+                
+                <label for="location">Lieu</label>
+                <input type="text" id="location" name="location" readonly>
+                <a href="" id="mapsLink" target="_blank">Voir sur Google Maps</a>
+                
+                <label for="name">Nom de l'étudiant</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="firstname">Prénom de l'étudiant</label>
+                <input type="text" id="firstname" name="firstname">
+                
+                <label for="student_number">Numéro d'étudiant</label>
+                <input type="text" id="student_number" name="student_number">
+                
+                <label for="email">Adresse mail étudiant</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="association_member">Êtes-vous inscrit à l'association ?</label>
+                <input type="checkbox" id="association_member" name="association_member" value="Oui"> Oui
+                <input type="checkbox" id="association_member" name="association_member" value="Non"> Non
+                
+                <label for="level">Votre niveau :</label>
+                <select id="level" name="level">
+                    <option value="débutant">Débutant</option>
+                    <option value="novice">Novice</option>
+                    <option value="confirmé">Confirmé</option>
+                    <option value="expert">Expert</option>
+                </select>
+                
+                <label for="equipment">Avez-vous votre propre matériel ?</label>
+                <input type="checkbox" id="equipment" name="equipment" value="Oui"> Oui
+                <input type="checkbox" id="equipment" name="equipment" value="Non"> Non
+                
+                <label for="comments">Commentaires</label>
+                <textarea id="comments" name="comments"></textarea>
+                
+                <button type="submit">Envoyer</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <h3>Nos informations</h3>
+                <p><strong>Adresse :</strong> <a href="https://www.google.com/maps/search/?api=1&query=30-32+Av.+de+la+République,+94800+Villejuif,+Paris,+France" target="_blank">30-32 Av. de la République, 94800 Villejuif</a></p>
+                <p><strong>Adresse mail :</strong> tirefrei@gmail.com</p>
+            </div>
+            <div class="footer-right">
+                <h3>Nous rejoindre</h3>
+                <ul>
+                    <li><img src="../img/Logo_Facebook.png" alt="Facebook" class="social-icon"><a href="https://www.facebook.com" target="_blank"> Facebook</a></li>
+                    <li><img src="../img/Logo_Instagram.png" alt="Instagram" class="social-icon"><a href="https://www.instagram.com/efreitir/?hl=fr" target="_blank"> Instagram</a></li>
+                    <li><img src="../img/Logo_Discord.png" alt="Discord" class="social-icon"><a href="https://discord.com/invite/RzMbcv2" target="_blank"> Discord</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>©️2024 Mael Lecarpentier & Tom Guerrier<br>Tous droits réservés.<br></p>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {//A mettre dans un fichier Js par la suite, Pas oublier  !! 
+            const urlParams = new URLSearchParams(window.location.search);
+            const activity = urlParams.get('activity');
+            const date = urlParams.get('date');
+            const location = urlParams.get('location');
+
+            document.getElementById('activity').value = activity;
+            document.getElementById('date').value = date;
+            document.getElementById('location').value = location;
+            document.getElementById('mapsLink').href = `https://maps.google.com?q=${encodeURIComponent(location)}`;
+
+            const form = document.getElementById('registrationForm');
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                const email = document.getElementById('email').value;
+                const confirmation = confirm("Vous êtes sur le point d'envoyer votre inscription. Les informations sont-elles correctement saisies ?");
+                if (confirmation) {
+                    alert(`Votre inscription a bien été enregistrée, les informations seront envoyées à l'adresse mail suivante : ${email}. A très bientôt !!`);
+                    window.location.href = 'acceuil.html';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
