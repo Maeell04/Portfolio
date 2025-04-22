@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio de Mael Lecarpentier</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #1e1e1e;
+      margin: 0;
+      padding: 30px 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 50px;
+      color: white;
+      font-size: 2.2rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    .card {
+      background: #2a2a2a;
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: transform 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 14px;
+      margin-bottom: 15px;
+    }
+    .card h2 {
+      font-size: 18px;
+      margin: 10px 0 5px;
+      color: white;
+    }
+    .card p {
+      font-size: 14px;
+      text-align: center;
+      color: #ccc;
+    }
+    .buttons {
+      margin-top: 15px;
+      display: flex;
+      gap: 10px;
+    }
+    .buttons a {
+      background: #6e7781;
+      color: white;
+      padding: 6px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 13px;
+      transition: background 0.2s;
+    }
+    .buttons a:hover {
+      background: #4f5255;
+    }
+    hr.separator {
+      border: none;
+      height: 1px;
+      background-color: #ccc;
+      width: 100%;
+      max-width: 1000px;
+      margin: 60px auto;
+    }
+    .skills-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 80px;
+      color: white;
+      max-width: 1000px;
+      margin: 0 auto 40px;
+    }
+    .skills-container > div {
+      flex: 1;
+      min-width: 200px;
+      text-align: center;
+    }
+    .icon-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Portfolio de mes projets</h1>
+  <div class="grid">
+    <!-- Tetris -->
+    <div class="card">
+      <img src="Projets_academiques/python/Tetris/captures/icon.png" alt="Tetris">
+      <p>Une version adaptée du jeu de Tetris en Python.</p>
+      <div class="buttons">
+        <a href="https://github.com/Maeell04/Portfolio/tree/main/Projets_academiques/python/Tetris">Accéder au code</a>
+        <a href="Projets_academiques/python/Tetris/Description_Tetris.pdf" target="_blank">En savoir plus</a>
+      </div>
+    </div>
+    <!-- Starship Battle -->
+    <div class="card">
+      <img src="Projets_academiques/python/Starship_battle/captures/icon.png" alt="Starship Battle">
+      <p>Jeu de combat spatial en player vs player réalisé avec Pygame.</p>
+      <div class="buttons">
+        <a href="https://github.com/Maeell04/Portfolio/tree/main/Projets_academiques/python/Starship_battle">Accéder au code</a>
+        <a href="Projets_academiques/python/Starship_battle/Description_Starship_battle.pdf" target="_blank">En savoir plus</a>
+      </div>
+    </div>
+    <!-- Gestion Agenda -->
+    <div class="card">
+      <img src="Projets_academiques/c/Gestion_agenda/captures/icon.png" alt="Gestion Agenda">
+      <p>Application console de gestion d'événements pour un agenda en C.</p>
+      <div class="buttons">
+        <a href="https://github.com/Maeell04/Portfolio/tree/main/Projets_academiques/c/Gestion_agenda">Accéder au code</a>
+        <a href="Projets_academiques/c/Gestion_agenda/Description_Gestion_agenda.pdf" target="_blank">En savoir plus</a>
+      </div>
+    </div>
+    <!-- Malloc your muscle -->
+    <div class="card">
+      <img src="Projets_academiques/sql/Malloc_your_muscle/captures/icon.png" alt="Malloc">
+      <p>Projet de base de données en SQL pour une salle de sport.</p>
+      <div class="buttons">
+        <a href="https://github.com/Maeell04/Portfolio/tree/main/Projets_academiques/sql/Malloc_your_muscle">Accéder au code</a>
+        <a href="Projets_academiques/sql/Malloc_your_muscle/Description_Malloc_your_muscle.pdf" target="_blank">En savoir plus</a>
+      </div>
+    </div>
+    <!-- Efrei Tir -->
+    <div class="card">
+      <img src="Projets_academiques/web/Efrei_tir/captures/icon.png" alt="Efrei Tir">
+      <p>Site vitrine HTML/CSS/JS pour une association étudiante de tir à l'Efrei.</p>
+      <div class="buttons">
+        <a href="https://github.com/Maeell04/Portfolio/tree/main/Projets_academiques/web/Efrei_tir">Accéder au code</a>
+        <a href="Projets_academiques/web/Efrei_tir/Description_Efrei_tir.pdf" target="_blank">En savoir plus</a>
+      </div>
+    </div>
+    <!-- Budget Manager -->
+    <div class="card">
+      <img src="Projets_academiques/java/Budget_manager_system/captures/icon.png" alt="Budget Manager">
+      <p>Application de gestion de budget pour les vacances (Java).</p>
+      <div class="buttons">
+        <a href="https://github.com/Maeell04/Portfolio/tree/main/Projets_academiques/java/Budget_manager_system">Accéder au code</a>
+        <a href="Projets_academiques/java/Budget_manager_system/Budget_manager_system_Description.pdf" target="_blank">En savoir plus</a>
+      </div>
+    </div>
+    <!-- E-commerce Store -->
+    <div class="card">
+      <img src="Projets_academiques/web/E-commerce_store/captures/icon.png" alt="E-commerce">
+      <p>Site e-commerce Vue.js + Node.js avec panier dynamique et description de produit.</p>
+      <div class="buttons">
+        <a href="https://github.com/Maeell04/Portfolio/tree/main/Projets_academiques/web/E-commerce_store">Accéder au code</a>
+        <a href="Projets_academiques/web/E-commerce_store/E-commerce_store_Description.pdf" target="_blank">En savoir plus</a>
+      </div>
+    </div>
+  </div>
+
+  <hr class="separator">
+
+  <!-- Section compétences et outils -->
+  <div class="skills-container">
+    <div>
+      <h2>Langages maîtrisés</h2>
+      <div class="icon-grid">
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="40"><br>Python</div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" height="40"><br>C</div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" height="40"><br>Java</div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/azuresqldatabase/azuresqldatabase-original.svg" height="40"><br>SQL</div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" height="40"><br>HTML</div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" height="40"><br>Git</div>
+      </div>
+    </div>
+    <div>
+      <h2>IDE & Outils utilisés</h2>
+      <div class="icon-grid">
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pycharm/pycharm-original.svg" height="40"><br>PyCharm</div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/clion/clion-original.svg" height="40"><br>CLion</div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg" height="40"><br>IntelliJ</div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg" height="40"><br>VS Code</div>
+        <div><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" height="40"><br>MySQL</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
