@@ -1,0 +1,26 @@
+Nom du projet : 
+Date : 
+Avec qui : 
+
+Objectif du projet : 
+[But principal, contexte du projet, pourquoi il a été réalisé]
+
+Compétences mobilisées :
+- 
+- 
+- 
+
+Fonctionnalités développées :
+- 
+- 
+- 
+
+Améliorations possibles :
+- 
+- 
+
+Mes tâches dans le projet :
+- 
+- 
+
+Captures :
