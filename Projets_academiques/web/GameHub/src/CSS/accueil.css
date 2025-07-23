@@ -1,0 +1,131 @@
+.games-moment {
+  display: flex;
+  justify-content: center; 
+  gap: 1rem;               
+  margin: 2rem auto;      
+  padding: 0;
+}
+
+.game-card {
+  width: 280px;            
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  transition: transform .2s, box-shadow .2s;
+}
+
+@media (max-width: 400px) {
+  .games-moment {
+    flex-wrap: wrap;
+  }
+  .game-card {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+.game-card img {
+  width: 100%;     
+  height: auto;       
+  display: block;     
+  object-fit: contain;
+  background: #ddd;  
+}
+
+.game-info {
+  padding: 0.5rem 0.75rem;
+  border-top: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #333;
+}
+
+.game-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+h2 {
+  text-align: center;
+  font-size: 1.6rem;
+  margin: 1.5rem 0 0.75rem;
+  color: #333;
+  font-weight: 600;
+}
+
+.comments-title {
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 2rem 0 1rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.comments-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  padding: 0 1rem 2rem;
+}
+
+.comment-card {
+  flex: 0 0 300px;         
+  background: #fafafa;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.comment-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.comment-content {
+  flex: 1;
+  font-size: 0.95rem;
+  color: #444;
+  margin-bottom: 0.75rem;
+}
+
+.comment-meta {
+  text-align: right;
+}
+
+.comment-meta small {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.welcome-message {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 1rem 1.5rem;
+  background-color: #fdfdfd;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.welcome-message h1 {
+  font-size: 2rem;
+  color: #6b21a8;
+  margin-bottom: 0.5rem;
+}
+
+.welcome-message p {
+  font-size: 1rem;
+  color: #444;
+  margin: 0.75rem 0;
+  line-height: 1.6;
+}

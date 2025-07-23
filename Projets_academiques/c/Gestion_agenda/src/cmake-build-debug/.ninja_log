@@ -1,0 +1,13 @@
+# ninja log v6
+6	103	7668036965385614	CMakeFiles/untitled.dir/main.c.obj	e225f01b7e6f38ab
+91	462	7668033647180689	CMakeFiles/untitled.dir/cell.c.obj	5bffbca4afbe48fa
+5	494	7668038172153738	build.ninja	e4e03a35ba76b012
+113	441	7668033647792783	CMakeFiles/untitled.dir/timer.c.obj	1ffc7d0df2c6a085
+102	461	7668033647282894	CMakeFiles/untitled.dir/menu.c.obj	92b320817c7cb031
+81	470	7668033647064302	CMakeFiles/untitled.dir/list.c.obj	54b255c357f0ace3
+149	276	7668034081847648	untitled.exe	846e49e89a11e6b1
+10	157	7668038307287027	untitled.exe	846e49e89a11e6b1
+5	124	7668039841613054	CMakeFiles/untitled.dir/timer.c.obj	1ffc7d0df2c6a085
+127	240	7668039842832886	untitled.exe	846e49e89a11e6b1
+71	263	7668657846205617	CMakeFiles/untitled.dir/main.c.obj	e225f01b7e6f38ab
+264	970	7668657848135711	untitled.exe	846e49e89a11e6b1

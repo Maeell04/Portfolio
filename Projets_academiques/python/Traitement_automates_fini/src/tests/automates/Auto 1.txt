@@ -1,0 +1,16 @@
+Entrez le numéro de l'automate de test : 1
+L'automate PP5-1.txt a été chargé avec succès.
+Nombre de charactere(s) dans l'alphabet : 0
+Nombre d'etat(s) : 1
+Nombre d'etat(s) initial : 1
+Etat(s) initial : ['0']
+Nombre d'etat(s) terminal : 1
+Etat(s) terminal : ['0']
+Nombre de transition(s) : 0
+Transition(s) : {}
+Table de transition
+	  
+ES|0:	
+L'automate est standard.
+L'automate est complet.
+L'automate est déterministe.

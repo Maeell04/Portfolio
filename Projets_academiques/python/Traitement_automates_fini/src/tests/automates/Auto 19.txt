@@ -1,0 +1,18 @@
+Entrez le numéro de l'automate de test : 19
+L'automate PP5-19.txt a été chargé avec succès.
+Nombre de charactere(s) dans l'alphabet : 1
+Nombre d'etat(s) : 3
+Nombre d'etat(s) initial : 1
+Etat(s) initial : ['1']
+Nombre d'etat(s) terminal : 1
+Etat(s) terminal : ['0']
+Nombre de transition(s) : 3
+Transition(s) : {1: {'a': 2}, 2: {'a': 0}, 0: {'a': 0}}
+Table de transition
+	  	a
+ S|0:	0
+ E|1:	2
+  |2:	0
+L'automate est standard.
+L'automate est complet.
+L'automate est déterministe.

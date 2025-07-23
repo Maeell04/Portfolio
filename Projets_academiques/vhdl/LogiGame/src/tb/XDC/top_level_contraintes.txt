@@ -1,0 +1,62 @@
+## ------------------------------------------------------------------------
+## Fichier de contraintes pour le design FPGA
+## Remplacez les valeurs de PACKAGE_PIN par celles fournies dans votre fiche de contraintes.
+## Assurez‐vous que l’IOSTANDARD correspond à votre carte (généralement LVCMOS33).
+## ------------------------------------------------------------------------
+
+## Horloge 100 MHz
+set_property PACKAGE_PIN H17 [get_ports CLK100MHZ]
+set_property IOSTANDARD LVCMOS33 [get_ports CLK100MHZ]
+
+## Boutons (BTN0 = Reset, BTN1 = Rouge, BTN2 = Vert, BTN3 = Bleu)
+set_property PACKAGE_PIN J15 [get_ports BTN0]
+set_property IOSTANDARD LVCMOS33 [get_ports BTN0]
+
+set_property PACKAGE_PIN J17 [get_ports BTN1]
+set_property IOSTANDARD LVCMOS33 [get_ports BTN1]
+
+set_property PACKAGE_PIN K15 [get_ports BTN2]
+set_property IOSTANDARD LVCMOS33 [get_ports BTN2]
+
+set_property PACKAGE_PIN K17 [get_ports BTN3]
+set_property IOSTANDARD LVCMOS33 [get_ports BTN3]
+
+## Switches (SW<3:0>, SW(3 downto 0))
+set_property PACKAGE_PIN L18 [get_ports {SW[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {SW[3]}]
+
+set_property PACKAGE_PIN M18 [get_ports {SW[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {SW[2]}]
+
+set_property PACKAGE_PIN N18 [get_ports {SW[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {SW[1]}]
+
+set_property PACKAGE_PIN P18 [get_ports {SW[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {SW[0]}]
+
+## LEDs pour le score (LED<3:0>, LED(3 downto 0))
+set_property PACKAGE_PIN R18 [get_ports {LED[3]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {LED[3]}]
+
+set_property PACKAGE_PIN T18 [get_ports {LED[2]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {LED[2]}]
+
+set_property PACKAGE_PIN U18 [get_ports {LED[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {LED[1]}]
+
+set_property PACKAGE_PIN V18 [get_ports {LED[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {LED[0]}]
+
+## LEDs supplémentaires (LD3_R, LD3_G, LD3_B)
+set_property PACKAGE_PIN W18 [get_ports LD3_R]
+set_property IOSTANDARD LVCMOS33 [get_ports LD3_R]
+
+set_property PACKAGE_PIN Y18 [get_ports LD3_G]
+set_property IOSTANDARD LVCMOS33 [get_ports LD3_G]
+
+set_property PACKAGE_PIN AB18 [get_ports LD3_B]
+set_property IOSTANDARD LVCMOS33 [get_ports LD3_B]
+
+## LED Game Over (GAME_OVER)
+set_property PACKAGE_PIN AD18 [get_ports GAME_OVER]
+set_property IOSTANDARD LVCMOS33 [get_ports GAME_OVER]

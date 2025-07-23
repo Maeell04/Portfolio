@@ -1,0 +1,34 @@
+Entrez le numéro de l'automate de test : 14
+L'automate PP5-14.txt a été chargé avec succès.
+Nombre de charactere(s) dans l'alphabet : 4
+Nombre d'etat(s) : 4
+Nombre d'etat(s) initial : 1
+Etat(s) initial : ['0']
+Nombre d'etat(s) terminal : 1
+Etat(s) terminal : ['1']
+Nombre de transition(s) : 10
+Transition(s) : {0: {'a': 0, 'b': 2, 'c': 3, 'd': 1}, 2: {'b': 2, 'c': 3, 'd': 1}, 3: {'c': 3, 'd': 1}, 1: {'d': 1}}
+Table de transition
+	  	a	b	c	d
+ E|0:	0	2	3	1
+ S|1:	-	-	-	1
+  |2:	-	2	3	1
+  |3:	-	-	3	1
+L'automate n'est pas standard.
+Avant standardisation : 
+Table de transition
+	  	a	b	c	d
+ E|0:	0	2	3	1
+ S|1:	-	-	-	1
+  |2:	-	2	3	1
+  |3:	-	-	3	1
+Apres standardisation : 
+Table de transition
+	  	a	b	c	d
+  |0:	0	2	3	1
+ S|1:	-	-	-	1
+  |2:	-	2	3	1
+  |3:	-	-	3	1
+ E|4:	0	2	3	1
+L'automate n'est pas complet.
+L'automate est déterministe.

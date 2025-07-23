@@ -1,0 +1,56 @@
+★ Affichage de la table des capacités :
++---+---+---+---+---+---+
+| 0 | 4 | 2 | 0 | 0 | 0 |
++---+---+---+---+---+---+
+| 0 | 0 | 0 | 4 | 0 | 1 |
++---+---+---+---+---+---+
+| 0 | 0 | 0 | 4 | 2 | 0 |
++---+---+---+---+---+---+
+| 0 | 0 | 0 | 0 | 2 | 2 |
++---+---+---+---+---+---+
+| 0 | 0 | 0 | 0 | 0 | 2 |
++---+---+---+---+---+---+
+| 0 | 0 | 0 | 0 | 0 | 0 |
++---+---+---+---+---+---+
+Le graphe résiduel initial est le graphe de départ.
+
+★ Itération 1 :
+  Discharge : a | Excès = 4 | Hauteur = 0
+    Relabel : a passe de hauteur 0 -> 1
+    Push : a -> c | Δ = 4
+
+★ Itération 2 :
+  Discharge : b | Excès = 2 | Hauteur = 0
+    Relabel : b passe de hauteur 0 -> 1
+    Push : b -> c | Δ = 2
+
+★ Itération 3 :
+  Discharge : c | Excès = 6 | Hauteur = 0
+    Relabel : c passe de hauteur 0 -> 1
+    Push : c -> d | Δ = 2
+    Push : c -> t | Δ = 2
+    Relabel : c passe de hauteur 1 -> 2
+    Push : c -> a | Δ = 2
+
+★ Itération 4 :
+  Discharge : d | Excès = 2 | Hauteur = 0
+    Relabel : d passe de hauteur 0 -> 1
+    Push : d -> t | Δ = 2
+
+★ Affichage du flot max :
++----+-----+-----+-----+-----+-----+-----+
+|    | s   | a   | b   | c   | d   | t   |
++====+=====+=====+=====+=====+=====+=====+
+| s  |     | 4/4 | 2/2 |     |     |     |
++----+-----+-----+-----+-----+-----+-----+
+| a  |     |     |     | 2/4 |     | 0/1 |
++----+-----+-----+-----+-----+-----+-----+
+| b  |     |     |     | 2/4 | 0/2 |     |
++----+-----+-----+-----+-----+-----+-----+
+| c  |     |     |     |     | 2/2 | 2/2 |
++----+-----+-----+-----+-----+-----+-----+
+| d  |     |     |     |     |     | 2/2 |
++----+-----+-----+-----+-----+-----+-----+
+| t  |     |     |     |     |     |     |
++----+-----+-----+-----+-----+-----+-----+
+Valeur du flot max = 5

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Harmabudd Interface</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- CSS personnalisé -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="min-h-screen p-6 relative">
+  <!-- Bouton Arrêter le programme -->
+  <button id="stopProgramBtn"
+          class="absolute top-4 right-4 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 z-10">
+    Arrêter le programme
+  </button>
+
+  <div class="max-w-5xl mx-auto">
+    <!-- Header -->
+    <header class="flex items-center justify-center mb-8">
+      <img src="logo.png" alt="Logo Harmabudd" class="h-12 w-auto object-contain mr-1" />
+      <h1 class="text-3xl font-bold text-green-800">harmabudd</h1>
+    </header>
+
+    <!-- Sélections -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+      <!-- Choix de rangée -->
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold text-green-700 mb-4">Choix de rangée :</h2>
+        <div class="flex space-x-4">
+          <button class="rangebtn border-2 border-green-200 rounded-lg py-4 px-6 text-green-700 font-semibold hover:bg-green-100" data-value="2">2</button>
+          <button class="rangebtn border-2 border-green-200 rounded-lg py-4 px-6 text-green-700 font-semibold hover:bg-green-100" data-value="5">5</button>
+          <button class="rangebtn border-2 border-green-200 rounded-lg py-4 px-6 text-green-700 font-semibold hover:bg-green-100" data-value="8">8</button>
+        </div>
+      </div>
+      <!-- Choix de couleur -->
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold text-green-700 mb-4">Choix de couleur :</h2>
+        <div class="grid grid-cols-6 gap-4 justify-items-center">
+          <div class="boxbtn w-12 h-12 bg-blue-500 rounded cursor-pointer" data-value="Bleu" title="Bleu"></div>
+          <div class="boxbtn w-12 h-12 bg-red-500 rounded cursor-pointer" data-value="Rouge" title="Rouge"></div>
+          <div class="boxbtn w-12 h-12 bg-green-500 rounded cursor-pointer" data-value="Vert" title="Vert"></div>
+          <div class="boxbtn w-12 h-12 bg-yellow-400 rounded cursor-pointer" data-value="Jaune" title="Jaune"></div>
+          <div class="boxbtn w-12 h-12 bg-purple-500 rounded cursor-pointer" data-value="Violet" title="Violet"></div>
+          <div class="boxbtn w-12 h-12 bg-cyan-500 rounded cursor-pointer" data-value="Cyan" title="Cyan"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bouton Chercher / Arrêter -->
+    <div class="bg-white rounded-lg shadow p-6 mb-6 flex justify-center">
+      <button id="actionBtn" class="bg-green-300 text-white font-bold py-2 px-8 rounded-lg hover:bg-green-400 disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+        Chercher
+      </button>
+    </div>
+
+    <!-- Sélection actuelle (caché au départ) -->
+    <div id="selectionInfo" class="hidden bg-green-50 border border-green-200 rounded-lg p-6 text-center text-green-700 mb-6">
+      Sélection actuelle :<br/>
+      <strong>Rangée :</strong> —  &nbsp;&nbsp;
+      <strong>Couleur :</strong> —  
+    </div>
+
+    <!-- Caméra & Terminal -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold text-green-700 mb-4">Interface Caméra</h2>
+        <div id="cameraWrapper" class="relative w-full h-64 bg-black rounded-lg overflow-hidden flex items-center justify-center text-gray-400">
+          <!-- Placeholder -->
+          <div id="cameraPlaceholder" class="absolute inset-0 flex items-center justify-center">Caméra off</div>
+          <!-- Flux MJPEG -->
+          <img id="cameraStream" class="absolute inset-0 w-full h-full object-cover hidden" alt="Flux caméra MJPEG" src="" />
+          <!-- Statut -->
+          <div id="cameraStatus" class="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white text-sm px-2 py-1 rounded hidden">En direct</div>
+        </div>
+      </div>
+      <div class="bg-white rounded-lg shadow p-6">
+        <h2 class="text-xl font-semibold text-green-700 mb-4">Terminal</h2>
+        <pre id="terminalOutput" class="bg-black text-green-300 p-4 rounded-lg h-64 overflow-y-auto">
+Harmabudd Terminal v1.0
+Système prêt...
+&gt; </pre>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

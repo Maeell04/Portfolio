@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="fr">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Interface de Contrôle Robot
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="style.css" rel="stylesheet"/>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+ </head>
+ <body class="p-4">
+    <div class="control-buttons">
+<button id="webControlStopBtn" class="bg-red-600 text-white p-2 rounded">
+  Arrêter Web Control
+</button>
+</div>
+  <div class="container mx-auto">
+   <h1 class="text-3xl font-bold mb-6 text-center text-blue-300">
+    Interface de Contrôle Robot
+   </h1>
+   <!-- Ligne 1 : Webcam + Ultrasonic + Actions -->
+   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Webcam Feed -->
+    <div class="control-panel p-4">
+     <div class="panel-header p-2 mb-4">
+      <h2 class="text-lg font-semibold">
+       Webcam
+      </h2>
+     </div>
+     <div class="webcam-container">
+      <div class="webcam-feed w-full flex items-center justify-center bg-black relative">
+ <img id="webcamStream" src="" class="w-full h-full object-contain rounded-lg hidden" />
+  <div id="webcamOverlay" class="absolute text-white text-sm top-2 left-2 bg-red-600 px-2 py-1 rounded hidden">
+    En direct
+  </div>
+  <div id="webcamPlaceholder" class="text-center text-gray-500">
+    <p class="mt-2">Flux vidéo non disponible</p>
+  </div>
+</div>
+
+      <p id="lastUpdate" class="text-center text-gray-400 mt-4">
+  Flux vidéo non disponible
+    </p>
+    <span class = "cam">
+        <button class="toggle-btn off" data-action="webcam">ON</button>
+    </span>
+     </div>
+    </div>
+    <!-- Ultrasonic Scanner -->
+    <div class="control-panel p-4">
+     <div class="panel-header p-2 mb-4">
+      <h2 class="text-lg font-semibold">
+       Scanner Ultrason
+      </h2>
+     </div>
+     <div class="panel-content">
+      <div class="ultrasonic-scanner w-full flex items-center justify-center text-gray-500">
+  <div id="radar-plot" class="w-full h-full relative">
+    <div id="scan-off-text" class="absolute inset-0 flex items-center justify-center text-gray-400 text-lg">
+      Scanner OFF
+    </div>
+  </div>
+</div>
+      <div class="mt-4 flex justify-center">
+       <div class="flex items-center space-x-4">
+        <div class="flex items-center space-x-1">
+         <div class="legend-dot bg-red-500 w-3 h-3 rounded-full">
+         </div>
+         <span>
+          Détection
+         </span>
+        </div>
+       </div>
+      </div>
+          <span class = "cam">
+        <button id="toggle-scan-btn" class="toggle-btn off">ON</button>
+    </span>
+     </div>
+    </div>
+    <!-- Actions -->
+    <div class="control-panel p-4">
+     <div class="panel-header p-2 mb-4">
+      <h2 class="text-lg font-semibold">
+       Actions
+      </h2>
+     </div>
+     <div class="panel-content">
+      <div class="grid grid-cols-1 gap-3 mb-6">
+       <button class="action-btn p-3 rounded-lg text-left" data-action="line">
+        Suivi de ligne
+       </button>
+       <button class="action-btn p-3 rounded-lg text-left" data-action="obstacle">
+        Évitement d'obstacle
+       </button>
+       <button class="action-btn p-3 rounded-lg text-left" data-action="labyrinthe">
+        Labyrinthe
+       </button>
+       <button class="action-btn p-3 rounded-lg text-left" data-action="complet">
+        Complet
+       </button>
+       <button class="action-btn p-3 rounded-lg text-left" data-action="light">
+        Light tracking
+       </button>
+       <button class="action-btn p-3 rounded-lg text-left" data-action="voice-control">
+        Contrôle vocal
+       </button>
+      </div>
+      <div class="text-red-500 text-sm mb-2 hidden" id="actionError">
+      </div>
+      <div class="mt-4 border-t border-gray-600 pt-4">
+       <h3 class="text-md font-semibold mb-3">
+        Contrôle
+       </h3>
+       <div class="flex justify-center space-x-4">
+        <button class="px-6 py-3 bg-green-600 hover:bg-green-700 rounded-lg font-bold" id="startBtn">
+         START
+        </button>
+        <button class="px-6 py-3 bg-red-600 hover:bg-red-700 rounded-lg font-bold" id="stopBtn">
+         STOP
+        </button>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- Ligne 2 : Motor + Head + System Info -->
+   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+    <!-- Contrôle Moteur -->
+    <div class="control-panel p-4">
+     <div class="panel-header p-2 mb-4">
+      <h2 class="text-lg font-semibold">
+       Contrôle Moteur
+      </h2>
+     </div>
+     <div class="panel-content flex flex-col items-center">
+      <!-- Grille directionnelle 3×3 -->
+      <div class="grid grid-cols-3 gap-2 mb-6">
+       <!-- Rangée du haut -->
+       <div>
+       </div>
+       <button class="direction-btn rounded-lg flex items-center justify-center" data-direction="up">
+        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M5 15l7-7 7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+         </path>
+        </svg>
+       </button>
+       <div>
+       </div>
+       <!-- Rangée du milieu -->
+       <button class="direction-btn rounded-lg flex items-center justify-center" data-direction="left">
+        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+         </path>
+        </svg>
+       </button>
+       <button class="direction-btn rounded-lg flex items-center justify-center" data-direction="center">
+        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <circle cx="12" cy="12" r="4" stroke-width="2">
+         </circle>
+        </svg>
+       </button>
+       <button class="direction-btn rounded-lg flex items-center justify-center" data-direction="right">
+        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+         </path>
+        </svg>
+       </button>
+       <!-- Rangée du bas -->
+       <div>
+       </div>
+       <button class="direction-btn rounded-lg flex items-center justify-center" data-direction="down">
+        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+         </path>
+        </svg>
+       </button>
+       <div>
+       </div>
+      </div>
+      <!-- Réglage de la vitesse -->
+      <div class="w-full mt-4">
+       <label class="block mb-2">
+        Vitesse du moteur
+       </label>
+       <input class="slider w-full" id="motorSpeed" max="100" min="0" type="range" value="0"/>
+       <div class="flex justify-between mt-1">
+        <span>
+         0
+        </span>
+        <span>
+         50
+        </span>
+        <span>
+         100
+        </span>
+       </div>
+      </div>
+      <div class="w-full mt-4 space-y-3">
+  <div class="angle-info">
+    <span>Angle des roues :</span>
+    <span id="wheelAngle">--°</span>
+  </div>
+</div>
+     </div>
+    </div>
+    <!-- Contrôle Tête -->
+    <div class="control-panel p-4">
+     <div class="panel-header p-2 mb-4">
+      <h2 class="text-lg font-semibold">
+       Contrôle Tête
+      </h2>
+     </div>
+     <div class="panel-content flex flex-col items-center">
+      <!-- Grille directionnelle 3×3 -->
+      <div class="grid grid-cols-3 gap-2 mb-6">
+       <!-- Rangée du haut -->
+       <div>
+       </div>
+       <button class="head-btn rounded-lg flex items-center justify-center" data-head="up">
+        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M5 15l7-7 7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+         </path>
+        </svg>
+       </button>
+       <div>
+       </div>
+       <!-- Rangée du milieu -->
+       <button class="head-btn rounded-lg flex items-center justify-center" data-head="left">
+        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+         </path>
+        </svg>
+       </button>
+       <button class="head-btn rounded-lg flex items-center justify-center" data-head="center">
+        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <circle cx="12" cy="12" r="4" stroke-width="2">
+         </circle>
+        </svg>
+       </button>
+       <button class="head-btn rounded-lg flex items-center justify-center" data-head="right">
+        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+         </path>
+        </svg>
+       </button>
+       <!-- Rangée du bas -->
+       <div>
+       </div>
+       <button class="head-btn rounded-lg flex items-center justify-center" data-head="down">
+        <svg class="h-8 w-8" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+         <path d="M19 9l-7 7-7-7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+         </path>
+        </svg>
+       </button>
+       <div>
+       </div>
+      </div>
+      <!-- Affichage des angles -->
+      <div class="w-full mt-4 space-y-3">
+       <div class="angle-info">
+        <span>
+         Angle latéral :
+        </span>
+        <span>
+         --°
+        </span>
+       </div>
+       <div class="angle-info">
+        <span>
+         Angle vertical :
+        </span>
+        <span>
+         --°
+        </span>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- Informations Système -->
+    <div class="control-panel p-4">
+     <div class="panel-header p-2 mb-4">
+      <h2 class="text-lg font-semibold">
+       Informations Système
+      </h2>
+     </div>
+     <div class="panel-content space-y-4 text-sm">
+      <!-- CPU Temp -->
+      <div>
+       <div class="flex justify-between mb-1">
+        <span>
+         Température CPU
+        </span>
+        <span>
+         --°C
+        </span>
+       </div>
+       <div class="w-full bg-gray-700 rounded-full h-2">
+        <div class="status-indicator bg-green-500 h-2 rounded-full" style="width: 45%">
+        </div>
+       </div>
+      </div>
+      <!-- CPU Usage -->
+      <div>
+       <div class="flex justify-between mb-1">
+        <span>
+         Température GPU
+        </span>
+        <span>
+         --°C
+        </span>
+       </div>
+       <div class="w-full bg-gray-700 rounded-full h-2">
+        <div class="status-indicator bg-green-500 h-2 rounded-full" style="width: 30%">
+        </div>
+       </div>
+      </div>
+      <!-- RAM Usage -->
+      <div>
+       <div class="flex justify-between mb-1">
+        <span>
+         Utilisation CPU
+        </span>
+        <span>
+         --%
+        </span>
+       </div>
+       <div class="w-full bg-gray-700 rounded-full h-2">
+        <div class="status-indicator bg-yellow-500 h-2 rounded-full" style="width: 60%">
+        </div>
+       </div>
+      </div>
+      <!-- GPU Temp -->
+      <div>
+       <div class="flex justify-between mb-1">
+        <span>
+         Utilisation RAM
+        </span>
+        <span>
+         --%
+        </span>
+       </div>
+       <div class="w-full bg-gray-700 rounded-full h-2">
+        <div class="status-indicator bg-green-500 h-2 rounded-full" style="width: 38%">
+        </div>
+       </div>
+      </div>
+      <!-- Battery -->
+      <div>
+       <div class="flex justify-between mb-1">
+        <span>
+         Batterie
+        </span>
+        <span>
+         --%
+        </span>
+       </div>
+       <div class="w-full bg-gray-700 rounded-full h-2">
+        <div class="status-indicator bg-blue-500 h-2 rounded-full" style="width: 75%">
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </div>
+   <!-- Ligne 3 : Robot Visualization + RGB Control -->
+   <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-6 mt-6">
+    <!-- Robot Visualization -->
+    <div class="control-panel p-4 col-span-1 md:col-span-2 lg:col-span-2">
+     <div class="panel-header p-2 mb-4">
+      <h2 class="text-lg font-semibold">
+       Robot
+      </h2>
+     </div>
+     <div class="panel-content">
+      <div class="robot-container">
+       <div class="robot-controls">
+        <button class="robot-control-btn" id="selectAllBtn">
+         Tout sélectionner
+        </button>
+        <button class="robot-control-btn" id="resetBtn">
+         Reset
+        </button>
+       </div>
+       <div class="robot-wrapper">
+        <div class="robot-top-row">
+         <span class="position-label label-avant">
+          Avant
+         </span>
+         <button class="robot-round large" data-led-id="14" data-led-type="rgb">
+         </button>
+         <button class="robot-round large" data-led-id="15" data-led-type="rgb">
+         </button>
+        </div>
+        <div class="robot-bar">
+         <button class="robot-switch" data-switch-id="1">
+         </button>
+         <button class="robot-switch" data-switch-id="2"> <!-- id lighttracking-->
+         </button>
+        </div>
+        <div class="robot-middle">
+         <div class="robot-box robot-box-left">
+          <span class="position-label label-gauche">
+           Gauche
+          </span>
+          <button class="robot-square" data-led-id="11">
+          </button>
+          <button class="robot-square" data-led-id="12">
+          </button>
+          <button class="robot-square" data-led-id="13">
+          </button>
+         </div>
+         <div class="robot-circles-column">
+          <button class="robot-round" data-led-id="0">
+          </button>
+          <button class="robot-round" data-led-id="1">
+          </button>
+         </div>
+         <div class="robot-box robot-box-right">
+          <span class="position-label label-droite">
+           Droite
+          </span>
+          <button class="robot-square" data-led-id="10">
+          </button>
+          <button class="robot-square" data-led-id="9">
+          </button>
+          <button class="robot-square" data-led-id="8">
+          </button>
+         </div>
+        </div>
+        <div class="robot-bottom-row">
+         <span class="position-label label-arriere">
+          Arrière
+         </span>
+         <div class="robot-box">
+          <button class="robot-square" data-led-id="4">
+          </button>
+          <button class="robot-square" data-led-id="3">
+          </button>
+          <button class="robot-square" data-led-id="2">
+          </button>
+         </div>
+         <div class="robot-box">
+          <button class="robot-square" data-led-id="5">
+          </button>
+          <button class="robot-square" data-led-id="6">
+          </button>
+          <button class="robot-square" data-led-id="7">
+          </button>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+    <!-- RGB Control -->
+    <div class="control-panel p-4 col-span-1 md:col-span-1 lg:col-span-1">
+     <div class="panel-header p-2 mb-4">
+      <h2 class="text-lg font-semibold">
+       Contrôle RGB
+      </h2>
+     </div>
+     <div class="panel-content">
+      <div class="mb-6">
+       <div class="color-box rounded bg-black" id="colorDisplay">
+       </div>
+      </div>
+      <div class="mt-6">
+       <label class="block mb-2">
+        Sélection de couleur
+       </label>
+       <div class="color-slider-container">
+        <div class="color-slider-gradient">
+        </div>
+        <input class="slider w-full" id="colorSlider" max="100" min="0" step="1" type="range" value="0">
+        </input>
+       </div>
+      </div>
+      <div class="grid grid-cols-3 gap-4 mt-4">
+       <div>
+        <label class="block mb-1 text-sm">
+         R
+        </label>
+        <input class="w-full bg-gray-700 border border-gray-600 rounded p-1 text-sm" id="rValue" max="255" min="0" type="number" value="0"/>
+       </div>
+       <div>
+        <label class="block mb-1 text-sm">
+         G
+        </label>
+        <input class="w-full bg-gray-700 border border-gray-600 rounded p-1 text-sm" id="gValue" max="255" min="0" type="number" value="0"/>
+       </div>
+       <div>
+        <label class="block mb-1 text-sm">
+         B
+        </label>
+        <input class="w-full bg-gray-700 border border-gray-600 rounded p-1 text-sm" id="bValue" max="255" min="0" type="number" value="0"/>
+       </div>
+      </div>
+      <div class="error-message" id="rgbErrorMessage">
+      </div>
+      <button class="w-full mt-4 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-bold transition-all" id="sendColorBtn">
+       Envoyer
+      </button>
+     </div>
+    </div>
+   </div>
+  </div>
+  <script src="script.js">
+  </script>
+ </body>
+</html>

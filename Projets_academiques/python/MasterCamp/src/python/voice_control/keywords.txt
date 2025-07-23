@@ -1,0 +1,52 @@
+# —— AVANCER ——
+avances      /1e-10/
+avance       /1e-10/
+avancent     /1e-10/
+avancee      /1e-10/
+avancements  /1e-10/
+avancement   /1e-10/
+avancer      /1e-10/
+
+# —— RECULER ——
+reculs       /1e-10/
+recule       /1e-10/
+recul        /1e-10/
+reculait     /1e-10/
+reculer      /1e-10/
+reculent     /1e-10/
+reculons     /1e-10/
+reculant     /1e-10/
+reculades    /1e-10/
+reculade     /1e-10/
+
+# —— DROITE ——
+droits       /1e-10/
+droit        /1e-10/
+droites      /1e-10/
+droite       /1e-10/
+droiture     /1e-10/
+droitier     /1e-10/
+
+# —— GAUCHE ——
+gauches      /1e-10/
+gauche       /1e-10/
+gaucher      /1e-10/
+gaucho       /1e-10/
+
+# —— ALLUMER ——
+allume       /1e-10/
+allumer      /1e-10/
+allument     /1e-10/
+allumant     /1e-10/
+allumage     /1e-10/
+allumette    /1e-10/
+allumettes   /1e-10/
+
+# —— STOP / ARRÊTER ——
+stoppe       /1e-10/
+stop         /1e-10/
+stopper      /1e-10/
+arrete       /1e-10/
+arreter      /1e-10/
+arretes      /1e-10/
+arretons     /1e-10/

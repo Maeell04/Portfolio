@@ -1,0 +1,193 @@
+.admin-table {
+  width: 100%;
+  max-width: 1200px;
+  margin: 2rem auto;
+  border-collapse: collapse;
+  table-layout: auto; 
+}
+.admin-table th,
+.admin-table td {
+  padding: 1rem 1.5rem; 
+  border: 1px solid #ddd;
+  vertical-align: middle;
+  word-wrap: break-word;
+}
+.admin-table thead th {
+  background: #fafafa;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  text-align: left;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.admin-title {
+  text-align: center;
+  margin-bottom: 1.5rem; 
+  font-size: 2rem;      
+  font-weight: 700;   
+}
+.btn-ban {
+  background: #fd7e14; color: #fff;
+  border: none; padding: 0.4rem 0.8rem; border-radius: 4px;
+  cursor: pointer;
+}
+.btn-delete {
+  background: #e3342f; color: #fff;
+  border: none; padding: 0.4rem 0.8rem; border-radius: 4px;
+  cursor: pointer;
+}
+.btn-ban:hover { background: #e08a13; }
+.btn-delete:hover { background: #cc1f1a; }
+.sort-controls {
+  display: inline-flex; align-items: center; margin: 1rem 0;
+}
+.sort-controls .btn-sort {
+  background: #6f42c1; color: #fff; border: none;
+  padding: 0.5rem 0.75rem; margin: 0 0.25rem; border-radius: 4px;
+  cursor: pointer;
+}
+.sort-controls .btn-sort:hover {
+  background: #5936a2;
+}
+
+
+.games-wrapper {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.games-carousel {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+}
+
+.game-card {
+  background: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.game-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.game-card p {
+  margin: 0.75rem 0 0.5rem;
+  padding: 0 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333333;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.game-card .actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: #f9f9f9;
+}
+
+.btn--danger,
+.btn--secondary {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 6px;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn--danger {
+  background: #e74c3c;
+  color: #ffffff;
+}
+
+.btn--secondary {
+  background: var(--primary-color);
+  color: #ffffff;
+}
+
+.game-card.add-card {
+  background: #ffffff;
+  border: 1px dashed #cccccc;
+  border-radius: 12px;
+  box-shadow: none;
+}
+
+.game-card.add-card .add-link {
+  font-size: 2rem;
+  color: var(--primary-color);
+}
+
+.form-admin {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.form-admin__label {
+  display: block;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.form-admin__input,
+.form-admin__textarea {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 0.375rem;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.form-admin__textarea {
+  min-height: 6rem;
+  resize: vertical;
+}
+
+.form-grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+
+.form-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.btn--2 {
+  display: inline-block; 
+  padding: 0.5rem 1rem;       
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-sizing: border-box;
+}

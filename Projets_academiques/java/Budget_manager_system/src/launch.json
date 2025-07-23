@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "ExpenseManagerApp_f04451d4"
+        },
+        {
+            "type": "java",
+            "name": "Launch App",
+            "request": "launch",
+            "mainClass": "App",
+            "projectName": "ExpenseManagerApp",
+            "classpath": [
+                "lib/mariadb-java-client.jar",
+                "bin/"
+            ]
+        }
+    ]
+}

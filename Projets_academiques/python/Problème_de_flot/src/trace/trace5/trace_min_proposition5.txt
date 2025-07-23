@@ -1,0 +1,1 @@
+Erreur lors du traitement de proposition\proposition5.txt (min) : Matrice des coûts invalide.
